@@ -46,7 +46,7 @@ class MeteorShower {
     float bright = map(retweetCount, 0, 10000, 0, 200);
     float r = map(followersCount, 0, 10000, 5, 20);
     //tweets.remove(0);
-    println(tweet.getText());
-    return new Meteor(new PVector(width, 0), mass, bright, r);
+    //println(tweet.getText());
+    return new Meteor(new PVector(noise(followersCount, retweetCount) * width, 0), mass, bright, r);
   }
 }

@@ -17,10 +17,10 @@ class Meteor{
     this.radius = radius;
     //generate velocity 
     //want it to go down and to the left
-    float vel = momentum / mass;
-    this.vel = new PVector(-3, vel);
+    float vel = map(momentum / mass, 0, 10000, 0, 5);
+    this.vel = new PVector(-1.5, vel);
     //acceleration should pull it down
-    accel = new PVector(0, 0.5);  
+    accel = new PVector(0, 0.05);  
     this.brightness = brightness; 
   }
   
