@@ -6,11 +6,12 @@ Mountain c;
 void setup() {
   //a = new Tree(); 
   size(600, 600, P2D);
+  randomSeed(42);
   ////fullScreen(P2D);
 
   //a.theta = map(width/3, 0, width, 0, PI/2);
   ////The first branch starts at the bottom of the window.
-  //pushMatrix(); 
+  //pushMatrix(); ll
   //translate(width/2, height/2);
   //stroke(0);
   //a.addBranches(height/8,a.theta,0);
@@ -25,8 +26,10 @@ void setup() {
 }
 
 void draw() {
-  //background(255);
-    //b.render();
+    background(255);
+
+    c = new Mountain(height,height/2);
+    noLoop();
   //b.initShower();
   //b.render();
   //noLoop(); 
