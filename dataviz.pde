@@ -1,7 +1,8 @@
-Tree a;
-float rotFactor;
-int i = 0;
-MeteorShower b ;
+//Tree a;
+//float rotFactor;
+//int i = 0;
+//MeteorShower b ;
+Mountain c;
 void setup() {
   //a = new Tree(); 
   size(600, 600, P2D);
@@ -19,14 +20,14 @@ void setup() {
   //popMatrix();
   //rotFactor = 0.02; 
   //background(0);
-  b = new MeteorShower();
-  
+  //b = new MeteorShower();
+  c = new Mountain(height,height/2);
 }
 
 void draw() {
-  background(255);
+  //background(255);
     //b.render();
-  b.initShower();
-  b.render();
+  //b.initShower();
+  //b.render();
   //noLoop(); 
 }
