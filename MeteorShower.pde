@@ -8,9 +8,16 @@ class MeteorShower {
   }
 
   public void initShower() {
-    //for (Status a : t.getTweets()) {
-    //  shower.add(createMeteor(a));
-    //}
+    try{
+      for (Status a : t.getTweets()) {
+        shower.add(createMeteor(a));
+      }
+      t.clearTweets();
+    }
+    catch(ConcurrentModificationException e){
+      System.out.println("Concurrent Mod exception");
+    }
+    
   }
   
   public void addShower(){
@@ -37,8 +44,9 @@ class MeteorShower {
     //PVector start, float mass, float brightness, float radius
     float mass = map(followersCount, 0, 10000, 0, 60);
     float bright = map(retweetCount, 0, 10000, 0, 200);
-    float r = map(followersCount, 0, 10000, 0, 30);
+    float r = map(followersCount, 0, 10000, 5, 20);
     //tweets.remove(0);
+    println(tweet.getText());
     return new Meteor(new PVector(width, 0), mass, bright, r);
   }
 }

@@ -24,10 +24,9 @@ void setup() {
 }
 
 void draw() {
-    //background(0);
+  background(255);
     //b.render();
-
-    
-  
-  
+  b.initShower();
+  b.render();
+  //noLoop(); 
 }
