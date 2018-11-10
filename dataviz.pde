@@ -28,27 +28,26 @@ void setup() {
   //c = new Mountain(height,height/2);
   //Mountain d = new Mountain(height, 2*height/3); 
   sky = new ArrayList<Constellation>();
-  for(int i = 0; i < 6; i++){
+  for (int i = 0; i < 6; i++) {
     PVector region = new PVector(i * width / 6, random(300));
     sky.add(new Constellation(region));
   }
-  
 }
 
-void renderSky(){
- for(Constellation a : sky){
-  a.update(2);
-  a.render();
- }
+void renderSky() {
+  for (Constellation a : sky) {
+    a.update(2);
+    a.render();
+  }
 }
 void draw() {
-    background(0);
+  background(0);
 
-    //c = new Mountain(height,height/2);
-      renderSky();
+  //c = new Mountain(height,height/2);
+  renderSky();
 
-    //noLoop();
+  //noLoop();
   //b.initShower();
   //b.render();
-  //noLoop(); 
+  //noLoop();
 }
