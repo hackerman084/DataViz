@@ -3,7 +3,7 @@
 //int i = 0;
 //MeteorShower b ;
 //Mountain c;
-Constellation co;
+ArrayList<Constellation> sky;
 void setup() {
   //a = new Tree(); 
   background(0);
@@ -27,15 +27,25 @@ void setup() {
   //b = new MeteorShower();
   //c = new Mountain(height,height/2);
   //Mountain d = new Mountain(height, 2*height/3); 
-  co = new Constellation(new PVector(width/2, height/2));
+  sky = new ArrayList<Constellation>();
+  for(int i = 0; i < 6; i++){
+    PVector region = new PVector(i * width / 6, random(300));
+    sky.add(new Constellation(region));
+  }
+  
 }
 
+void renderSky(){
+ for(Constellation a : sky){
+  a.update(2);
+  a.render();
+ }
+}
 void draw() {
     background(0);
 
     //c = new Mountain(height,height/2);
-      co.update(2);
-      co.render();
+      renderSky();
 
     //noLoop();
   //b.initShower();

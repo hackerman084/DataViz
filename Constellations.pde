@@ -4,7 +4,7 @@ class Constellation{
   public Constellation(PVector region){
     //want it to spontaneously form around the region
     int size = (int) random(5,7);
-    int dist = (int) random(width/7, 2*width/7);
+    int dist = (int) random(50,70);
     PVector loc = null; 
     for(int i = 0; i < size; i++){
       loc = new PVector(random(region.x-dist, region.x+dist),random(region.y-dist, region.y+dist) );
