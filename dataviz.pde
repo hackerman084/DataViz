@@ -6,7 +6,8 @@ Mountain c;
 void setup() {
   //a = new Tree(); 
   size(600, 600, P2D);
-  randomSeed(42);
+  randomSeed(20);
+  noiseSeed(20);
   ////fullScreen(P2D);
 
   //a.theta = map(width/3, 0, width, 0, PI/2);
@@ -23,13 +24,15 @@ void setup() {
   //background(0);
   //b = new MeteorShower();
   c = new Mountain(height,height/2);
+  Mountain d = new Mountain(height, 2*height/3); 
 }
 
 void draw() {
-    background(255);
+    //background(255);
 
-    c = new Mountain(height,height/2);
-    noLoop();
+    //c = new Mountain(height,height/2);
+    
+    //noLoop();
   //b.initShower();
   //b.render();
   //noLoop(); 
