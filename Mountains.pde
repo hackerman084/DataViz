@@ -6,40 +6,29 @@ class Mountain{
  
  public Mountain(float min, float max){
   this.minHeight = min; 
-  this.maxHeight = max; 
-  float amp1 = 5; 
-  float freq1 = 0.5;
-  float y_prev = maxHeight; 
-  float shift = random(-5*width, width*5) * 400;
-  for(int i = 0; i < width; i+=random(3,7)){
-    amp1 = random(10,25);
-    //freq1 = random(0.5,0.6);
-    //amp1 = 10;
-    float noise = (noise(i, amp1, y_prev));
-    //float noise = 1;
-    float up = random(0,0.9); 
-    System.out.println(y);
-    if (up > 0.5){
-      System.out.println("WTF " +amp1*sin(radians(i)));
-      //y = y_prev + noise(amp1*sin(radians(freq1*i + shift))) * amp1;
-      y = map(amp1*sin(radians(freq1*i + shift)), -amp1*PI, amp1*PI, minHeight, maxHeight);
-      y += (noise * 2); 
-
-    }
-    else {
-      System.out.println("WTF " +noise* amp1*sin(radians(i*freq1)));
-      //y = y_prev - noise(amp1*sin(radians(freq1*i + shift)))*amp1;
-      y = map(amp1*sin(radians(freq1*i + shift)), -amp1*PI, amp1*PI, minHeight, maxHeight);
-      y -= (noise * 2); 
-
-    }
-    line(x, y_prev, i, y);
-    y_prev = y;
-    x = i;
- 
- }
- 
+  this.maxHeight = max;
+  float freq = random(0.01,0.025);
+  int octaves = (int) random(3,5);
+  float falloff = 0.5;
+  float offset = random(200);
+  fill(255,0,0,10);
+  beginShape();
+  noiseDetail(octaves, falloff);
+  for(int i = 0; i < width; i+=2){
+   float s = sin(radians(i*0.25) + offset)*300;
+   float y1 = noise(i*freq)*500-250;
+   float y = s+noise((i + offset)*freq)*200-100;
+    y = map(y, 0, height, maxHeight, minHeight);
+    vertex(i,y);
+  }
+  //adding other vertices to close it off
+  vertex(width,y);
+  vertex(width,height);
+  vertex(0,height);
+  endShape(CLOSE);
+  
 }
+
 }
 
 class Mountains{
