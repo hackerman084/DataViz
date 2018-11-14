@@ -11,12 +11,14 @@ class Constellation{
     }
   }
   
+  //for an individual constellation (handling the individual stars)
   public void update(float dist){
     for(int i = 0; i < constellation.size();){
       Star a = constellation.get(i); 
       a.update(dist); 
       if (a.radius + a.center.x > width ) {
         constellation.remove(a);
+        //add a new one
       }
       else {
         i++;
@@ -49,6 +51,12 @@ class Star{
    brightness = 2*ratio / radius; //inversely proportionate
  }
  
+ public Star(PVector center, float radius, float brightness){
+  this.center= center; 
+  this.radius = radius; 
+  this.brightness = brightness;
+ }
+ 
  //handles movement and twinkle
  public void update(float dist){
    center = PVector.add(center, new PVector(dist,0));
@@ -65,6 +73,5 @@ class Star{
    fill(255, brightness);
    noStroke();
    ellipse(center.x, center.y, radius, radius);
- }
-  
+ }  
 }
