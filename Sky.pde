@@ -8,19 +8,37 @@ class Sky {
   MeteorShower shower; 
   float minHeight; 
   float maxHeight;
-
+  float dist; 
+  
   public void initConstellations() {
-    //start it in the 
     constellations = new ArrayList<Constellation>();
     for (int i = 0; i < 6; i++) {
       PVector region = new PVector(i * width / 6, random(300));
       sky.add(new Constellation(region));
     }
   }
-  public Sky(int numStars, int minHeight, float maxHeight) {
+  
+  public void updateConstellations(){
+    for(int i = 0; i < constellations.size(); i++){
+       Constellation a = constellations.get(i);
+       //if it's near the edge, spawn a new one in the list
+       if (width - a.region.x < 20){
+         constellations.add(new Constellation(new PVector(0, random(minHeight, maxHeight))));
+       }
+       a.update(dist);
+    }
+  }
+  
+  public void renderConstellations(){
+   for(Constellation a : constellations){
+    a.render(); 
+   }
+  }
+  
+  public Sky(int numStars, int minHeight, float maxHeight, float dist) {
     this.minHeight = minHeight; 
     this.maxHeight = maxHeight; 
-
+    this.dist = dist;
 
     stars = new ArrayList<Star>();
     //use noise to try and initialize a few star clusters

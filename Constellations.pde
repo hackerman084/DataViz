@@ -1,6 +1,8 @@
 class Constellation{
   ArrayList<Star> constellation = new ArrayList<Star>(); 
+  PVector region;
   public Constellation(PVector region){
+    this.region = region; 
     //want it to spontaneously form around the region
     int size = (int) random(5,7);
     int dist = (int) random(50,70);
