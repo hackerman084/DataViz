@@ -22,7 +22,7 @@ class Sky {
     for(int i = 0; i < constellations.size(); i++){
        Constellation a = constellations.get(i);
        //if it's near the edge, spawn a new one in the list
-       if (width - a.region.x < 20){
+       if (width - a.loc.x < 50){
          constellations.add(new Constellation(new PVector(0, random(minHeight, maxHeight))));
        }
        a.update(dist);

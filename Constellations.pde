@@ -1,20 +1,20 @@
 class Constellation{
   ArrayList<Star> constellation = new ArrayList<Star>(); 
-  PVector region;
+  PVector loc; 
   public Constellation(PVector region){
-    this.region = region; 
     //want it to spontaneously form around the region
     int size = (int) random(5,7);
     int dist = (int) random(50,70);
-    PVector loc = null; 
+    this.loc = null; 
     for(int i = 0; i < size; i++){
-      loc = new PVector(random(region.x-dist, region.x+dist),random(region.y-dist, region.y+dist) );
+      this.loc = new PVector(random(region.x-dist, region.x+dist),random(region.y-dist, region.y+dist) );
       constellation.add(new Star(loc, random(5,15)));
     }
   }
   
   //for an individual constellation (handling the individual stars)
   public void update(float dist){
+    loc = loc.add(dist,0);
     for(int i = 0; i < constellation.size();){
       Star a = constellation.get(i); 
       a.update(dist); 

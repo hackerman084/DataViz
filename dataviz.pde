@@ -14,7 +14,7 @@ void setup() {
   img = loadImage("sky.png");
   img.resize(width, height);
   background(img);
-  sky = new Sky(100,0, 200,20);
+  sky = new Sky(100,0, 200,2);
   
   
   ////fullScreen(P2D);
