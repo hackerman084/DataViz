@@ -3,6 +3,8 @@
 //int i = 0;
 //MeteorShower b ;
 Mountain c;
+  PImage img;
+
 ArrayList<Constellation> sky;
 void setup() {
   //a = new Tree(); 
@@ -10,6 +12,9 @@ void setup() {
   size(600, 600, P2D);
   randomSeed(20);
   noiseSeed(20);
+  img = loadImage("sky.png");
+  img.resize(width, height);
+  background(img);
   ////fullScreen(P2D);
 
   //a.theta = map(width/3, 0, width, 0, PI/2);
@@ -26,7 +31,7 @@ void setup() {
   //background(0);
   //b = new MeteorShower();
   //c = new Mountain(height,height/2);
-  Mountain d = new Mountain(height, 2*height/3); 
+  //Mountain d = new Mountain(height, 2*height/3); 
   sky = new ArrayList<Constellation>();
   for (int i = 0; i < 6; i++) {
     PVector region = new PVector(i * width / 6, random(300));
@@ -42,11 +47,12 @@ void renderSky() {
 }
 void draw() {
   //background(0);
+  background(img);
 
-  c = new Mountain(height,height/2);
-  //renderSky();
+  //c = new Mountain(height,height/2);
+  renderSky();
 
-  noLoop();
+  //noLoop();
   //b.initShower();
   //b.render();
   //noLoop();

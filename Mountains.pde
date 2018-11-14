@@ -26,7 +26,6 @@ class Mountain{
   vertex(width,height);
   vertex(0,height);
   endShape(CLOSE);
-  
 }
 
 }
