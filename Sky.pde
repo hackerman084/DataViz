@@ -14,7 +14,7 @@ class Sky {
     constellations = new ArrayList<Constellation>();
     for (int i = 0; i < 6; i++) {
       PVector region = new PVector(i * width / 6, random(300));
-      sky.add(new Constellation(region));
+      constellations.add(new Constellation(region));
     }
   }
   
@@ -40,19 +40,28 @@ class Sky {
     this.maxHeight = maxHeight; 
     this.dist = dist;
 
-    stars = new ArrayList<Star>();
-    //use noise to try and initialize a few star clusters
-    for (int x = 0; x < numStars; x+=4) {
-      for (int y = minHeight; y < maxHeight; y+=5) {
-        float noise = noise(x, y);
-        stars.add(new Star(new PVector(x, y), noise*7, noise*200));
-      }
-    }
-    shower = new MeteorShower();
-    //initializing the tweets
-    shower.initShower();
+    //stars = new ArrayList<Star>();
+    ////use noise to try and initialize a few star clusters
+    //for (int x = 0; x < numStars; x+=4) {
+    //  for (int y = minHeight; y < maxHeight; y+=5) {
+    //    float noise = noise(x, y);
+    //    stars.add(new Star(new PVector(x, y), noise*7, noise*200));
+    //  }
+    //}
+    //shower = new MeteorShower();
+    ////initializing the tweets
+    //shower.initShower();
+    
+    initConstellations();
   }
 
   public void updateSky() {
+    updateConstellations();
+  }
+  
+  public void renderSky(){
+    for(Constellation a : constellations){
+     a.render(); 
+    }
   }
 }
