@@ -19,13 +19,21 @@ class Sky {
   }
   
   public void updateConstellations(){
-    for(int i = 0; i < constellations.size(); i++){
+    System.out.println("SIZE: "+constellations.size());
+    for(int i = 0; i < constellations.size();){
        Constellation a = constellations.get(i);
        //if it's near the edge, spawn a new one in the list
-       if (width - a.loc.x < 50){
-         constellations.add(new Constellation(new PVector(0, random(minHeight, maxHeight))));
+       if (a.constellation.size() == 0){
+        constellations.remove(a); 
        }
-       a.update(dist);
+       else {
+         if (width - a.loc.x < 50 && constellations.size() < 10){
+           System.out.println("ADD: " +i);
+           constellations.add(new Constellation(new PVector(0, random(minHeight, maxHeight))));
+         }
+         i++;
+         a.update(dist);
+       }  
     }
   }
   
