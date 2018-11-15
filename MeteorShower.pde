@@ -1,16 +1,20 @@
 class MeteorShower {
-  ArrayList<Meteor> shower; 
+  ArrayList<Meteor> meteors; 
   TwitterAccess t; 
   
   public MeteorShower() {
     t = new TwitterAccess();
-    shower = new ArrayList<Meteor>();
+    meteors = new ArrayList<Meteor>();
   }
 
   public void initShower() {
     try{
       for (Status a : t.getTweets()) {
-        shower.add(createMeteor(a));
+        //System.out.println("STATUS: " +a.getText());
+        //System.out.println("INIT: " +meteors.size());
+        if (meteors.size() < 10){
+          meteors.add(createMeteor(a));
+        }
       }
       t.clearTweets();
     }
@@ -20,20 +24,23 @@ class MeteorShower {
     
   }
   
-  public void addShower(){
-    
-  }
+  public void update(){
+    for (int i = 0; i < meteors.size(); ) {
+      Meteor a = meteors.get(i);
 
-  public void render() {
-    for (int i = 0; i < shower.size(); ) {
-      Meteor a = shower.get(i);
-
-      if (a.loc.y + a.radius > height) {
-        shower.remove(a);
+      if (a.loc.y + a.radius > height || a.loc.x + a.radius < 0) {
+        meteors.remove(a);
       } else {
         a.update();
-        a.display();
+        i++;
       }
+    }
+    
+  }
+  public void render() {
+    //System.out.println("METEORS: " +meteors.size());
+    for(Meteor a : meteors){
+        a.render();
     }
   }
 
@@ -46,7 +53,7 @@ class MeteorShower {
     float bright = map(retweetCount, 0, 10000, 0, 200);
     float r = map(followersCount, 0, 10000, 5, 20);
     //tweets.remove(0);
-    //println(tweet.getText());
+    //println("CREATE: "+ tweet.getText());
     return new Meteor(new PVector(noise(followersCount, retweetCount) * width, 0), mass, bright, r);
   }
 }

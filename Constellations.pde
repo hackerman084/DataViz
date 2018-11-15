@@ -38,7 +38,6 @@ class Constellation{
       stroke(255, (a.brightness + b.brightness) / 2);
       line(a.center.x, a.center.y, b.center.x, b.center.y);
       }
-      
     } 
 }
 

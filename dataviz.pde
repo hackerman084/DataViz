@@ -2,7 +2,7 @@
 //float rotFactor;
 //int i = 0;
 //MeteorShower b ;
-Mountain c;
+Mountains field;
   PImage img;
 Sky sky;
 void setup() {
@@ -14,8 +14,8 @@ void setup() {
   img = loadImage("sky.png");
   img.resize(width, height);
   background(img);
-  sky = new Sky(300,0, 200,2);
-  
+  sky = new Sky(300,0, 400,2);
+  field = new Mountains(3, height, height-400);
   
   ////fullScreen(P2D);
 
@@ -43,15 +43,14 @@ void setup() {
 
 
 void draw() {
-  //background(0);
+  //background(255);
   background(img);
-
-  //c = new Mountain(height,height/2);
+  //noStroke(); 
+  //fill(0, 10);
+  //rect(0,0,width,height);
   sky.updateSky();
   sky.renderSky();
+  field.render();
 
-  //noLoop();
-  //b.initShower();
-  //b.render();
-  //noLoop();
+  
 }

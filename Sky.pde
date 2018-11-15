@@ -70,10 +70,11 @@ class Sky {
 
 
   public void updateSky() {
+    shower.initShower();
     updateConstellations();
-
-    for (int i = 0; i < shower.shower.size(); i++) {
-      Meteor a = shower.shower.get(i); 
+    shower.update();
+    for (int i = 0; i < shower.meteors.size(); i++) {
+      Meteor a = shower.meteors.get(i); 
       for (int j = 0; j < stars.size(); j++) {
         Star b = stars.get(j);
         //float d = PVector.dist(a.loc, b.center);
@@ -82,8 +83,6 @@ class Sky {
         float illumination = map(falloff, 1, 0, 255, 0);
         //fill(illumination);
         b.brightness = illumination; 
-        System.out.println("BRIGHTNESS: " +b.brightness);
-
         b.render();
       }
     }
@@ -98,5 +97,7 @@ class Sky {
     for (Star a : stars) {
       a.render();
     }
+    
+    shower.render();
   }
 }
