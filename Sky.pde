@@ -27,7 +27,7 @@ class Sky {
         constellations.remove(a); 
        }
        else {
-         if (width - a.loc.x < 50 && constellations.size() < 10){
+         if (width - a.loc.x < 50 && constellations.size() < 6){
            System.out.println("ADD: " +i);
            constellations.add(new Constellation(new PVector(0, random(minHeight, maxHeight))));
          }
