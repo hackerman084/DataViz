@@ -8,13 +8,13 @@ Sky sky;
 void setup() {
   //a = new Tree(); 
   //background(0);
-  size(600, 600, P2D);
+  size(800, 600, P2D);
   randomSeed(20);
   noiseSeed(20);
   img = loadImage("sky.png");
   img.resize(width, height);
   background(img);
-  sky = new Sky(100,0, 200,2);
+  sky = new Sky(300,0, 200,2);
   
   
   ////fullScreen(P2D);

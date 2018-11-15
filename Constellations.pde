@@ -33,8 +33,8 @@ class Constellation{
     for(int i = 1; i < constellation.size();i++){
       Star a = constellation.get(i); 
       Star b = constellation.get(i-1);
-      a.display();
-      b.display();
+      a.render();
+      b.render();
       stroke(255, (a.brightness + b.brightness) / 2);
       line(a.center.x, a.center.y, b.center.x, b.center.y);
       }
@@ -71,7 +71,7 @@ class Star{
    } 
  }
  
- public void display(){
+ public void render(){
    fill(255, brightness);
    noStroke();
    ellipse(center.x, center.y, radius, radius);
